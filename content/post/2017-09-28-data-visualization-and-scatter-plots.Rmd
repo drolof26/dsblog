@@ -1,0 +1,39 @@
+---
+title: Data Visualization and Scatter Plots
+author: Devorah Roloff
+date: '2017-09-28'
+slug: data-visualization-and-scatter-plots
+categories:
+  - R
+  - visualization
+tags:
+  - visualization
+  - scatter plots
+---
+
+```{r message=FASLE,warning=FALSE}
+library(Lahman)
+library(sqldf)
+library(ggplot2)
+```
+
+With this we want to extract and then visualize the data. We will do this as shown below:
+```{r}
+# extracting the data-----------------------------
+
+query<-"SELECT playerID,sum(HR) AS career_HR,sum(SO) AS career_SO
+FROM Batting
+GROUP BY playerID
+HAVING sum(HR)>=400"
+
+result<-sqldf(query)
+
+# visualizing the data-----------------------
+
+ggplot()+
+  geom_point(data=result,aes(x=career_SO,y=career_HR),size=3,color="blue")+
+  ggtitle("Career Strikeouts VS Homeruns for Great Hitters")+
+  xlab("Career Strikeouts")+
+  ylab("Career Homeruns")
+```
+
