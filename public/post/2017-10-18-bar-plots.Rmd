@@ -1,0 +1,37 @@
+---
+title: Bar Plots
+author: Devorah Roloff
+date: '2017-10-18'
+slug: bar-plots
+categories:
+  - bar plots
+  - R
+tags:
+  - visualization
+---
+
+Within this post we will be looking at visualization using Bar Plots.
+```{r}
+library(Lahman)
+library(sqldf)
+library(ggplot2)
+```
+
+```{r}
+query<-"SELECT name,HR
+FROM Teams
+WHERE yearID=1980
+ORDER BY HR"
+
+result<-sqldf(query)
+
+result$name<-factor(result$name,levels=result$name)
+
+ggplot()+
+  geom_bar(data=result,aes(x=name,y=HR),stat='identity',color="pink",fill="blue")+
+  coord_flip()+
+  ylab("Homeruns")+
+  xlab("Teams")+
+  ggtitle("1980 Team Homerun Distribution")
+```
+

@@ -6,16 +6,44 @@
     <description>Recent content in Categories on Devorahs Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Wed, 18 Oct 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://example.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Bar Plots</title>
+      <link>http://example.com/categories/bar-plots/</link>
+      <pubDate>Wed, 18 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.com/categories/bar-plots/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Histograms</title>
+      <link>http://example.com/categories/histograms/</link>
+      <pubDate>Wed, 18 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.com/categories/histograms/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>R</title>
       <link>http://example.com/categories/r/</link>
-      <pubDate>Thu, 28 Sep 2017 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 18 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>http://example.com/categories/r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Time Series</title>
+      <link>http://example.com/categories/time-series/</link>
+      <pubDate>Wed, 18 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://example.com/categories/time-series/</guid>
       <description></description>
     </item>
     

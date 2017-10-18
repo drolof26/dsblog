@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Data Visualization and Scatter Plots</title>
+        <title>Time Series </title>
         <style>
 
     html body {
@@ -69,7 +69,7 @@
 
                 <div class="navbar-header">
 
-                    <a class="navbar-brand visible-xs" href="#">Data Visualization and Scatter Plots</a>
+                    <a class="navbar-brand visible-xs" href="#">Time Series </a>
 
                     <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
                         <span class="icon-bar"></span>
@@ -119,34 +119,37 @@
     
     
 
-    <h4><a href="/post/data-visualization-and-scatter-plots/">Data Visualization and Scatter Plots</a></h4>
-    <h5>September 28, 2017</h5>
-     <kbd class="item-tag">visualization</kbd>  <kbd class="item-tag">scatter plots</kbd> 
+    <h4><a href="/post/time-series/">Time Series </a></h4>
+    <h5>October 18, 2017</h5>
+     <kbd class="item-tag">visualization</kbd> 
 
 </div>
 
 
-    <br> <div class="text-justify"><pre class="r"><code>library(Lahman)
-library(sqldf)
-library(ggplot2)</code></pre>
-<p>With this we want to extract and then visualize the data. We will do this as shown below:</p>
-<pre class="r"><code># extracting the data-----------------------------
-
-query&lt;-&quot;SELECT playerID,sum(HR) AS career_HR,sum(SO) AS career_SO
+    <br> <div class="text-justify"><p>Time Series are similar to Scatter Plots in that they have a line, but they do not have points. Below we will display Babe Ruth’s homerun total trends over the years.</p>
+<pre class="r"><code>library(Lahman)
+library(sqldf)</code></pre>
+<pre><code>## Loading required package: gsubfn</code></pre>
+<pre><code>## Loading required package: proto</code></pre>
+<pre><code>## Warning in doTryCatch(return(expr), name, parentenv, handler): unable to load shared object &#39;/Library/Frameworks/R.framework/Resources/modules//R_X11.so&#39;:
+##   dlopen(/Library/Frameworks/R.framework/Resources/modules//R_X11.so, 6): Library not loaded: /opt/X11/lib/libSM.6.dylib
+##   Referenced from: /Library/Frameworks/R.framework/Resources/modules//R_X11.so
+##   Reason: image not found</code></pre>
+<pre><code>## Could not load tcltk.  Will use slower R code instead.</code></pre>
+<pre><code>## Loading required package: RSQLite</code></pre>
+<pre class="r"><code>library(ggplot2)</code></pre>
+<pre class="r"><code>query&lt;-&quot;SELECT yearID,HR
 FROM Batting
-GROUP BY playerID
-HAVING sum(HR)&gt;=400&quot;
+WHERE playerID=&#39;ruthba01&#39;&quot;
 
 result&lt;-sqldf(query)
 
-# visualizing the data-----------------------
-
 ggplot()+
-  geom_point(data=result,aes(x=career_SO,y=career_HR),size=3,color=&quot;blue&quot;)+
-  ggtitle(&quot;Career Strikeouts VS Homeruns for Great Hitters&quot;)+
-  xlab(&quot;Career Strikeouts&quot;)+
-  ylab(&quot;Career Homeruns&quot;)</code></pre>
-<p><img src="/post/2017-09-28-data-visualization-and-scatter-plots_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+  geom_line(data=result,aes(x=yearID,y=HR),color=&quot;green&quot;)+
+  ggtitle(&quot;Ruth&#39;s Homerun Totals Throughout the Year&quot;)+
+  xlab(&quot;Year&quot;)+
+  ylab(&quot;Homeruns&quot;)</code></pre>
+<p><img src="/post/2017-10-18-time-series_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
 </div>
 
     
@@ -157,20 +160,6 @@ ggplot()+
         <h4 class="page-header">Related</h4>
 
          <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/post/time-series/">Time Series </a></h4>
-    <h5>October 18, 2017</h5>
-     <kbd class="item-tag">visualization</kbd> 
-
-</div>
-  <div class="item">
 
     
     
@@ -196,6 +185,20 @@ ggplot()+
     <h4><a href="/post/bar-plots/">Bar Plots</a></h4>
     <h5>October 18, 2017</h5>
      <kbd class="item-tag">visualization</kbd> 
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/data-visualization-and-scatter-plots/">Data Visualization and Scatter Plots</a></h4>
+    <h5>September 28, 2017</h5>
+     <kbd class="item-tag">visualization</kbd>  <kbd class="item-tag">scatter plots</kbd> 
 
 </div>
  

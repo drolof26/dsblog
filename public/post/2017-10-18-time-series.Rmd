@@ -1,0 +1,34 @@
+---
+title: 'Time Series '
+author: Devorah Roloff
+date: '2017-10-18'
+slug: time-series
+categories:
+  - time series
+  - R
+tags:
+  - visualization
+---
+
+Time Series are similar to Scatter Plots in that they have a line, but they do not have points. Below we will display Babe Ruth's homerun total trends over the years.
+
+```{r}
+library(Lahman)
+library(sqldf)
+library(ggplot2)
+```
+
+```{r}
+query<-"SELECT yearID,HR
+FROM Batting
+WHERE playerID='ruthba01'"
+
+result<-sqldf(query)
+
+ggplot()+
+  geom_line(data=result,aes(x=yearID,y=HR),color="green")+
+  ggtitle("Ruth's Homerun Totals Throughout the Year")+
+  xlab("Year")+
+  ylab("Homeruns")
+```
+

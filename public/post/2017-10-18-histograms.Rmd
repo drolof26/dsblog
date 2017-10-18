@@ -1,0 +1,31 @@
+---
+title: Histograms
+author: Devorah Roloff
+date: '2017-10-18'
+slug: histograms
+categories:
+  - histograms
+  - R
+tags:
+  - visualization
+---
+
+When we use histograms, we are using only one column of data which is shown below when we look for player weights from the Master table.
+
+```{r}
+library(Lahman)
+library(sqldf)
+library(ggplot2)
+```
+
+```{r}
+query<-"SELECT weight
+FROM Master"
+
+result<-sqldf(query)
+
+ggplot()+
+  geom_histogram(data=result,aes(x=weight),color="pink",fill="blue",bins=50)+
+  ggtitle("Body Weight Distribution for Baseball Players")
+```
+
